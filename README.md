@@ -1,3 +1,7 @@
+![](https://img.shields.io/badge/codehakase-approved-brightgreen.svg)
+
+
+
 # php-exam
 >A PHP exam with questions from beginner to expert level curated by [@codehakase](https://twitter.com/iamfrankcute)
 
