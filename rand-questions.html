@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PHP Exam</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <style type="text/css">
+            .spacer {
+                margin-top: 300px;
+            }
+            .modal-header-success {
+                color:#fff;
+                padding:9px 15px;
+                border-bottom:1px solid #eee;
+                background-color: #5cb85c;
+                -webkit-border-top-left-radius: 5px;
+                -webkit-border-top-right-radius: 5px;
+                -moz-border-radius-topleft: 5px;
+                -moz-border-radius-topright: 5px;
+                 border-top-left-radius: 5px;
+                 border-top-right-radius: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="spacer"></div>
+            <div class="col-md-8 col-md-offset-4">
+                <button class="btn btn-lg btn-success" onclick="randQuestions()">Show Random Question</button>
+            </div>
+        </div>
+        <script>
+        function randQuestions() {
+            dataString = "clicked=true"
+            $.ajax({
+                
+                type: "POST",
+                url: "php-exam.php",
+                data: dataString,
+                cache: false,
+                success: function(res) {
+                    $("#modalBody").html(res);
+                    $("#success").modal('show');
+                }
+            });
+        return false;
+        }
+    </script>
+    <div class="modal fade" id="success" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-success">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h1 class="text-center"><i class="glyphicon glyphicon-thumbs-up"></i>PHP Exam</h1>
+                </div>
+                <div class="modal-body" id="modalBody">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal" onclick="window.open('rand-questions.html', '_self')">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- Modal -->
+    </body>
+   
+    
+</html>
